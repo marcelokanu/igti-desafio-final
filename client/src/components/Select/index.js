@@ -9,7 +9,7 @@ function Select(props) {
 
   useMemo(() => {
     async function loadYearMonths() {
-      api.get(`transaction/months`).then((response) => {
+      api.loadYearMonths().then((response) => {
         setMonthsSelectData(response.data);
       });
     }

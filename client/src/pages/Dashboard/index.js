@@ -17,7 +17,7 @@ function Dashboard() {
 
   useMemo(() => {
     async function loadTransactions() {
-      api.get(`transaction?period=${monthSelected}`).then((response) => {
+      api.findByPeriod(monthSelected).then((response) => {
         setTransactions(response.data.transactions);
       });
     }
