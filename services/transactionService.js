@@ -1,11 +1,13 @@
-const mongoose = require("mongoose");
-const { parse, getDate, getMonth, getYear, format } = require("date-fns");
-const fs = require("fs").promises;
-const path = require("path");
+const mongoose = require('mongoose');
+const { parse, getDate, getMonth, getYear, format } = require('date-fns');
+
+const fs = require('fs').promises;
+const path = require('path');
 
 const ObjectId = mongoose.Types.ObjectId;
 
-const TransactionModel = require("../models/TransactionModel");
+const TransactionModel = require('../models/TransactionModel');
+const { ptBR } = require('date-fns/locale');
 
 const deleteTransaction = async (req, res) => {
   const _id = req.params.id;
@@ -49,7 +51,7 @@ const updateTransaction = async (req, res) => {
   if (!description || !value || !category || !yearMonthDay) {
     return res.status(404).json({
       error:
-        "description, value, category e yearMonthDay são campos obrigatórios",
+        'description, value, category e yearMonthDay são campos obrigatórios',
     });
   }
 
@@ -60,7 +62,7 @@ const updateTransaction = async (req, res) => {
     });
   }
   try {
-    const dateParsed = parse(yearMonthDay, "yyyy-MM-dd", new Date());
+    const dateParsed = parse(yearMonthDay, 'yyyy-MM-dd', new Date());
 
     const day = getDate(dateParsed);
     const month = getMonth(dateParsed) + 1;
@@ -75,8 +77,8 @@ const updateTransaction = async (req, res) => {
         year,
         month,
         day,
-        yearMonth: format(dateParsed, "yyyy-MM"),
-        yearMonthDay: format(dateParsed, "yyyy-MM-dd"),
+        yearMonth: format(dateParsed, 'yyyy-MM'),
+        yearMonthDay: format(dateParsed, 'yyyy-MM-dd'),
       },
       { new: true, useFindAndModify: false }
     );
@@ -101,7 +103,7 @@ const findByPeriod = async (req, res) => {
       }
       return transactions;
     }
-  ).sort("day");
+  ).sort('day');
 
   return res.status(202).json({
     length: transactions.length,
@@ -115,11 +117,11 @@ const createTransaction = async (req, res) => {
   if (!description || !value || !category || !yearMonthDay || !type) {
     return res.status(404).json({
       error:
-        "description, value, category, yearMonthDay e type são campos obrigatórios",
+        'description, value, category, yearMonthDay e type são campos obrigatórios',
     });
   }
 
-  const dateParsed = parse(yearMonthDay, "yyyy-MM-dd", new Date());
+  const dateParsed = parse(yearMonthDay, 'yyyy-MM-dd', new Date());
 
   const day = getDate(dateParsed);
   const month = getMonth(dateParsed) + 1;
@@ -133,8 +135,8 @@ const createTransaction = async (req, res) => {
       year,
       month,
       day,
-      yearMonth: format(dateParsed, "yyyy-MM"),
-      yearMonthDay: format(dateParsed, "yyyy-MM-dd"),
+      yearMonth: format(dateParsed, 'yyyy-MM'),
+      yearMonthDay: format(dateParsed, 'yyyy-MM-dd'),
       type,
     },
     (err, transaction) => {
@@ -147,11 +149,13 @@ const createTransaction = async (req, res) => {
 };
 
 const loadYearMonths = async (_, res) => {
-  const months = await TransactionModel.distinct("yearMonth");
+  const months = await TransactionModel.distinct('yearMonth');
 
   const monthYearIndex = months.map((month) => {
     return {
-      formattedMonth: format(parse(month, "yyyy-MM", new Date()), "MMM/yyyy"),
+      formattedMonth: format(parse(month, 'yyyy-MM', new Date()), 'MMM/yyyy', {
+        locale: ptBR,
+      }),
       month,
     };
   });
@@ -160,7 +164,7 @@ const loadYearMonths = async (_, res) => {
 };
 
 const loadCategories = async (_, res) => {
-  const categories = await TransactionModel.distinct("category");
+  const categories = await TransactionModel.distinct('category');
 
   const categoriesIndex = categories.map((category, index) => {
     return { id: index, category };
@@ -172,8 +176,8 @@ const loadCategories = async (_, res) => {
 const importJson = async (req, res) => {
   const transactionsFile = path.resolve(
     path.resolve(),
-    "database",
-    "transactionsArray.json"
+    'database',
+    'transactionsArray.json'
   );
   const typeImport = req.params.type;
 
@@ -181,7 +185,7 @@ const importJson = async (req, res) => {
   const transactionsJson = JSON.parse(transactionsRead);
 
   switch (typeImport) {
-    case "default":
+    case 'default':
       const deletedCount = await TransactionModel.deleteMany();
       await TransactionModel.insertMany(
         transactionsJson,
@@ -197,14 +201,14 @@ const importJson = async (req, res) => {
         }
       );
       break;
-    case "update":
+    case 'update':
       const deletedTransactions = await TransactionModel.deleteMany();
       const transactionsUpdated = transactionsJson.map((transaction) => {
         return {
           ...transaction,
           type:
-            transaction.category === "Receita"
-              ? (transaction.type = "+")
+            transaction.category === 'Receita'
+              ? (transaction.type = '+')
               : transaction.type,
         };
       });
@@ -223,7 +227,7 @@ const importJson = async (req, res) => {
       );
       break;
     default:
-      return res.status(404).json({ result: "Tipo desconhecido" });
+      return res.status(404).json({ result: 'Tipo desconhecido' });
   }
 };
 
