@@ -40,6 +40,7 @@ function Dashboard() {
     async function loadStates() {
       setFilteredTransactions(transactions);
       setTransactionsGroupByDay(groupArray(transactions, 'yearMonthDay'));
+      setEmptyList(false);
     }
     loadStates();
     setLoaded(true);
@@ -98,7 +99,19 @@ function Dashboard() {
               placeholder="Buscar"
             />
           </BoxSearch>
-          <ListTransactions transactionsGroupByDay={transactionsGroupByDay} />
+          {!emptyList ? (
+            <ListTransactions transactionsGroupByDay={transactionsGroupByDay} />
+          ) : (
+            <div
+              style={{
+                color: 'var(--red-text)',
+                marginLeft: '12px',
+                marginTop: '20px',
+              }}
+            >
+              Nenhuma transação encontrada para o termo buscado.
+            </div>
+          )}
         </Wrapper>
       ) : (
         <BarLoader width={'100%'} color={'var(--orange)'} />
