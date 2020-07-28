@@ -1,18 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import CountUp from 'react-countup';
 import { CardContainer, Card } from './styles';
-import { formatMoney, sumValues } from '../../util';
+import { sumValues } from '../../util';
 
 export default function BoxInfos(props) {
   const { data: filteredTransactions } = props;
-  const [calcValues, setCalcValues] = useState({
+  const [oldValues, setOldValues] = useState({
     oldIncome: 0,
-    income: 0,
-    outcome: 0,
     oldOutcome: 0,
-    balance: 0,
     oldbalance: 0,
   });
+  const [calcValues, setCalcValues] = useState({
+    income: 0,
+    outcome: 0,
+
+    balance: 0,
+  });
+
+  useEffect(() => {
+    setOldValues([calcValues.income, calcValues.outcome, calcValues.balance]);
+  }, [calcValues]);
 
   useEffect(() => {
     const incomeValues = filteredTransactions.filter(({ type, value }) => {
@@ -22,20 +29,14 @@ export default function BoxInfos(props) {
     const outcomeValues = filteredTransactions.filter(({ type }) => {
       return type === '-';
     });
-    const oldIncome = calcValues.income;
-    const oldOutcome = calcValues.outcome;
-    const oldBalance = calcValues.balance;
 
     const income = sumValues(incomeValues);
     const outcome = sumValues(outcomeValues);
     const balance = income - outcome;
 
     setCalcValues({
-      oldIncome,
       income,
-      oldOutcome,
       outcome,
-      oldBalance,
       balance,
     });
   }, [filteredTransactions]);
@@ -50,7 +51,7 @@ export default function BoxInfos(props) {
         <h1>
           <CountUp
             preserveValue={true}
-            start={calcValues.oldIncome}
+            start={oldValues.oldIncome}
             end={calcValues.income}
             duration={1}
             separator="."
@@ -70,7 +71,7 @@ export default function BoxInfos(props) {
         <h1>
           <CountUp
             preserveValue={true}
-            start={calcValues.oldOutcome}
+            start={oldValues.oldOutcome}
             end={calcValues.outcome}
             duration={1}
             separator="."
@@ -89,7 +90,7 @@ export default function BoxInfos(props) {
         <h1>
           <CountUp
             preserveValue={true}
-            start={calcValues.oldBalance}
+            start={oldValues.oldBalance}
             end={calcValues.balance}
             duration={1}
             separator="."
