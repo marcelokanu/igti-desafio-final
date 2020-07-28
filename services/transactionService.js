@@ -1,13 +1,11 @@
 const mongoose = require('mongoose');
 const { parse, getDate, getMonth, getYear, format } = require('date-fns');
-
 const fs = require('fs').promises;
 const path = require('path');
 
 const ObjectId = mongoose.Types.ObjectId;
 
 const TransactionModel = require('../models/TransactionModel');
-const { ptBR } = require('date-fns/locale');
 
 const deleteTransaction = async (req, res) => {
   const _id = req.params.id;
@@ -153,9 +151,7 @@ const loadYearMonths = async (_, res) => {
 
   const monthYearIndex = months.map((month) => {
     return {
-      formattedMonth: format(parse(month, 'yyyy-MM', new Date()), 'MMM/yyyy', {
-        locale: ptBR,
-      }),
+      formattedMonth: format(parse(month, 'yyyy-MM', new Date()), 'MMM/yyyy'),
       month,
     };
   });

@@ -39,9 +39,6 @@ function Dashboard() {
         <Select value={monthSelected} onChange={handleChangeMonth} />
       </Header>
       <BarLoader width={'100%'} color={'var(--orange)'} />
-      <Wrapper>
-        <ListTransactions transactionsGroupByDay={transactionsGroupByDay} />
-      </Wrapper>
     </Container>
   );
 }
