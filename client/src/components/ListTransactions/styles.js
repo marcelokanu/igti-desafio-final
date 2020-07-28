@@ -90,12 +90,20 @@ export const CategoryDescription = styled.div`
     font-weight: bold;
     color: var(--primary);
     margin-right: 10px;
+
+    @media (max-width: 300px) {
+      font-size: 1rem;
+    }
   }
   > p {
     margin: 0;
     border: 0;
     font-size: 13px;
     color: var(--secondary);
+
+    @media (max-width: 300px) {
+      font-size: 12px;
+    }
   }
 `;
 
@@ -104,7 +112,11 @@ export const Value = styled.div`
     font-weight: bold;
     font-family: Consolas, monospace;
     color: var(--primary);
+    @media (max-width: 300px) {
+      font-size: 12px;
+    }
   }
+
   margin-left: auto;
   margin-right: 10px;
 

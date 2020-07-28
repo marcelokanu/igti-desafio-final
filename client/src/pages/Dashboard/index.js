@@ -36,6 +36,7 @@ function Dashboard() {
     <Container>
       <Header>
         <h1>Desafio Final do Bootcamp Full Stack</h1>
+        <Select value={monthSelected} onChange={handleChangeMonth} />
       </Header>
       <BarLoader width={'100%'} color={'var(--orange)'} />
       <Wrapper>
