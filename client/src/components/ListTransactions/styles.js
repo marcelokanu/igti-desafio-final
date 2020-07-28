@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  margin: 0 10px;
+`;
 
 export const Collection = styled.ul`
   border: 0 !important;
@@ -25,7 +27,7 @@ export const DayMonth = styled.span`
 export const ListTransaction = styled.li`
   display: flex;
   flex-wrap: wrap;
-  min-height: 65px;
+  min-height: 55px;
   border-radius: 5px;
   align-items: center;
   margin: 0 0 5px 0;

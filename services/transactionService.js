@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
+
 const { parse, getDate, getMonth, getYear, format } = require('date-fns');
+const { ptBR } = require('date-fns/locale');
+
 const fs = require('fs').promises;
 const path = require('path');
 
@@ -151,7 +154,9 @@ const loadYearMonths = async (_, res) => {
 
   const monthYearIndex = months.map((month) => {
     return {
-      formattedMonth: format(parse(month, 'yyyy-MM', new Date()), 'MMM/yyyy'),
+      formattedMonth: format(parse(month, 'yyyy-MM', new Date()), 'MMM/yyyy', {
+        locale: ptBR,
+      }),
       month,
     };
   });
