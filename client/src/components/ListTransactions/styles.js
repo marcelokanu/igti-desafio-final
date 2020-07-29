@@ -37,6 +37,10 @@ export const ListTransaction = styled.li`
   cursor: pointer;
   transition: 0.3s;
 
+  @media (max-width: 400px) {
+    flex-basis: 0%;
+  }
+
   color: var(--primary);
   i {
     margin-left: 10px;
@@ -79,6 +83,28 @@ export const ListTransaction = styled.li`
             }
           `}
   }
+`;
+
+export const BoxActions = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  transition: height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+
+  overflow: hidden;
+
+  @media (max-width: 400px) {
+    > i {
+      display: none;
+    }
+  }
+
+  ${(props) =>
+    props.actionVisible === true
+      ? 'opacity: 1; width: auto; height: auto;'
+      : 'opacity: 0; width: 0; height: 0;}'};
 `;
 
 export const CategoryDescription = styled.div`

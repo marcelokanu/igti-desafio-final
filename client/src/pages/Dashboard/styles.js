@@ -58,9 +58,9 @@ export const BoxSearch = styled.div`
 
 export const Lancamentos = styled.span`
   width: 100px;
-  color: #fff;
+  color: var(--white);
   margin-left: auto;
-  background: #6f42c1;
+  background: var(--purple-bg);
   padding: 0.25em 0.4em;
   border-radius: 5px 5px 0 0;
   text-align: center;
@@ -74,7 +74,7 @@ export const Lancamentos = styled.span`
 
 export const Input = styled.input`
   border: none;
-  border-top: 1px solid #6f42c1;
+  border-top: 1px solid var(--purple-bg);
   padding: 5px !important;
   background: transparent;
   border-radius: 5px 0 5px 5px;
@@ -95,8 +95,8 @@ export const Input = styled.input`
   }
 
   &:focus {
-    border: 1px solid #6f42c1 !important;
-    border-left: 3px solid #6f42c1 !important;
+    border: 1px solid var(--purple-bg) !important;
+    border-left: 3px solid var(--purple-bg) !important;
     background: #ffffff;
   }
 `;

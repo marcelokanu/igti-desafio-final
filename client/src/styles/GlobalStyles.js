@@ -5,9 +5,6 @@ export default createGlobalStyle`
   margin: 0;
   padding: 0;
   outline: none;
-
-
-  color: var(--tertiary)
   
 }
 
@@ -26,7 +23,7 @@ html, body, root {
 *, button, input {
   border: 0;
   background: none;
-
+  cursor: pointer;
 
   font-family: --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
 }
@@ -49,7 +46,7 @@ html {
   --purple-bg: #6934a8;
   --purple-text: #291344;
   --purple-btn: #4a148c;
-  --purple-hover: #6f42c1;
+  --purple-hover: #7b47ba;
 
   --orange: #fb8c00;
   --orange-text: #5c3a1a;
@@ -61,6 +58,7 @@ html {
   --red-bg-initial-gradient: rgba(255,205,210,1);
   --red-bg-final-gradient: rgba(245,245,245,1);
   --red-text: #5c1a1a;
+  --red-btn: #e57373;
   
   --teal-bg: #4db6ac;
   --teal-bg-light: #f0f7f7;
