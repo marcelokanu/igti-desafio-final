@@ -60,6 +60,8 @@ function ListTransactions({ transactionsGroupByDay }) {
                     <Button
                       color="var(--purple-btn)"
                       hovercolor="var(--purple-hover)"
+                      textcolor="var(--white)"
+                      hovertextcolor="var(--light-gray)"
                       onClick={() => alert('editar')}
                     >
                       <i className="material-icons" alt="editar">
@@ -68,7 +70,9 @@ function ListTransactions({ transactionsGroupByDay }) {
                     </Button>
                     <Button
                       color="var(--red-btn)"
-                      hovercolor="var(--red-text)"
+                      hovercolor="var(--red-bg)"
+                      textcolor="var(--white)"
+                      hovertextcolor="var(--light-gray)"
                       onClick={() => alert('excluir')}
                     >
                       <i className="material-icons" alt="excluir">

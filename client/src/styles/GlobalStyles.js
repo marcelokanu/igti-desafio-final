@@ -58,7 +58,7 @@ html {
   --red-bg-initial-gradient: rgba(255,205,210,1);
   --red-bg-final-gradient: rgba(245,245,245,1);
   --red-text: #5c1a1a;
-  --red-btn: #e57373;
+  --red-btn: #c75050;
   
   --teal-bg: #4db6ac;
   --teal-bg-light: #f0f7f7;

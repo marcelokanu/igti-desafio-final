@@ -30,22 +30,22 @@ export const ListTransaction = styled.li`
   min-height: 55px;
   border-radius: 5px;
   align-items: center;
-  margin: 0 0 5px 0;
+  margin-bottom: 5px;
   background-color: var(--white);
-  padding: 5px;
+  padding: 2px;
   border-bottom: 1px solid var(--light-gray);
   cursor: pointer;
   transition: 0.3s;
-
-  @media (max-width: 400px) {
-    flex-basis: 0%;
-  }
 
   color: var(--primary);
   i {
     margin-left: 10px;
     transition: 0.3s;
     color: var(--secondary);
+
+    @media (max-width: 400px) {
+      margin-left: 0;
+    }
   }
 
   ${(props) =>
@@ -87,8 +87,11 @@ export const ListTransaction = styled.li`
 `;
 
 export const BoxActions = styled.div`
-  text-align: right;
   transition: height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+
+  > i {
+    margin: 0;
+  }
 
   overflow: hidden;
 
@@ -98,13 +101,9 @@ export const BoxActions = styled.div`
       : 'opacity: 0; width: 0; height: 0;}'};
 
   @media (max-width: 400px) {
-    position: absolute;
-    right: 10px;
-    background: var(--primary);
-    border-radius: 5px;
-    padding: auto;
+    display: flex;
+    flex-direction: column;
 
-    margin: 0;
     > i {
       display: none;
     }
@@ -113,29 +112,27 @@ export const BoxActions = styled.div`
 
 export const CategoryDescription = styled.div`
   display: flex;
+  flex: 1;
   flex-direction: column;
   flex-wrap: wrap;
   font-size: 1.1rem;
   margin: 0 10px;
 
+  @media (max-width: 300px) {
+    font-size: 1rem;
+    margin-right: 5px;
+  }
+
   > strong {
     font-weight: bold;
     color: var(--primary);
     margin-right: 10px;
-
-    @media (max-width: 300px) {
-      font-size: 1rem;
-    }
   }
   > p {
     margin: 0;
     border: 0;
     font-size: 13px;
     color: var(--secondary);
-
-    @media (max-width: 300px) {
-      font-size: 12px;
-    }
   }
 `;
 
