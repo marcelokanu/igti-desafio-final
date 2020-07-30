@@ -57,7 +57,8 @@ export const ListTransaction = styled.li`
           border-left: 3px solid var(--teal-bg);
         `}
 
-  &:hover {
+  &:hover, 
+  &.active {
     ${(props) =>
       props.transType === '-'
         ? css`
@@ -86,25 +87,28 @@ export const ListTransaction = styled.li`
 `;
 
 export const BoxActions = styled.div`
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: space-around;
-
+  text-align: right;
   transition: height 0.5s ease-in-out, opacity 0.5s ease-in-out;
 
   overflow: hidden;
-
-  @media (max-width: 400px) {
-    > i {
-      display: none;
-    }
-  }
 
   ${(props) =>
     props.actionVisible === true
       ? 'opacity: 1; width: auto; height: auto;'
       : 'opacity: 0; width: 0; height: 0;}'};
+
+  @media (max-width: 400px) {
+    position: absolute;
+    right: 10px;
+    background: var(--primary);
+    border-radius: 5px;
+    padding: auto;
+
+    margin: 0;
+    > i {
+      display: none;
+    }
+  }
 `;
 
 export const CategoryDescription = styled.div`

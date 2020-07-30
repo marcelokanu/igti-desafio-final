@@ -36,6 +36,7 @@ function ListTransactions({ transactionsGroupByDay }) {
             {arrTransaction.map((transaction) => {
               return (
                 <ListTransaction
+                  className={transaction._id === openOption.id ? 'active' : ''}
                   key={transaction._id}
                   transType={transaction.type}
                   onClick={() => toggleOption(transaction._id)}
@@ -47,7 +48,6 @@ function ListTransactions({ transactionsGroupByDay }) {
                     <strong>{transaction.category}</strong>
                     <p> {transaction.description}</p>
                   </CategoryDescription>
-
                   <Value transType={transaction.type}>
                     <strong>{formatMoney(transaction.value)}</strong>
                   </Value>
