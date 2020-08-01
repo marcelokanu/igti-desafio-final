@@ -1,8 +1,9 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { BarLoader } from 'react-spinners';
+import { Link } from 'react-router-dom';
 
 import api from '../../services/api';
-import { currentMonthYear, groupArray } from '../../util';
+import { currentMonthYear } from '../../util';
 
 import Select from '../../components/Select';
 import Card from '../../components/Card';
@@ -15,12 +16,12 @@ import {
   BoxSearch,
   Input,
   Lancamentos,
+  ButtonAdd,
 } from './styles';
 
 function Dashboard() {
   const [transactions, setTransactions] = useState([]);
   const [filteredTransactions, setFilteredTransactions] = useState([]);
-  const [transactionsGroupByDay, setTransactionsGroupByDay] = useState({});
 
   const [monthSelected, setMonthSelected] = useState(currentMonthYear);
 
@@ -39,7 +40,6 @@ function Dashboard() {
   useEffect(() => {
     async function loadStates() {
       setFilteredTransactions(transactions);
-      setTransactionsGroupByDay(groupArray(transactions, 'yearMonthDay'));
       setEmptyList(false);
     }
     loadStates();
@@ -74,11 +74,13 @@ function Dashboard() {
     transactionsFiltered.length === 0
       ? setEmptyList(true)
       : setEmptyList(false);
-    setTransactionsGroupByDay(groupArray(transactionsFiltered, 'yearMonthDay'));
   };
 
   return (
     <Container>
+      <ButtonAdd as={Link} to="transaction/add">
+        <i className="material-icons">add</i>
+      </ButtonAdd>
       <Header>
         <h1>Desafio Final do Bootcamp Full Stack</h1>
         <Select value={monthSelected} onChange={handleChangeMonth} />
@@ -100,7 +102,7 @@ function Dashboard() {
             />
           </BoxSearch>
           {!emptyList ? (
-            <ListTransactions transactionsGroupByDay={transactionsGroupByDay} />
+            <ListTransactions transactions={filteredTransactions} />
           ) : (
             <div
               style={{

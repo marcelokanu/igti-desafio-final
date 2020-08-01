@@ -17,7 +17,19 @@ html, body, root {
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+
+  &::-webkit-scrollbar {
+    width: 1em;
+  }
+
   
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: var(--purple-bg);
+    outline: 1px solid var(--orange);
+  }
+    
 }
 
 *, button, input {
@@ -40,7 +52,7 @@ html {
   --secondary: #bdbdbd;
   --light-gray: #eeeeee;
 
-  --header-bg-initial-gradient: rgba(131, 74, 200);
+  --header-bg-initial-gradient: rgba(131, 74, 200, 0);
   --header-bg-final-gradient: rgba(41, 19, 68, 1);
 
   --purple-bg: #6934a8;
@@ -50,7 +62,7 @@ html {
 
   --orange: #fb8c00;
   --orange-text: #5c3a1a;
-  --orange-bg-initial-gradient: rgb(255,224,178);
+  --orange-bg-initial-gradient: rgba(255,224,178,1);
   --orange-bg-final-gradient: rgba(245,245,245,1);
 
   --red-bg: #e57373;
@@ -65,6 +77,7 @@ html {
   --teal-bg-initial-gradient: rgba(224,242,241,1);
   --teal-bg-final-gradient: rgba(245,245,245,1);
   --teal-text: #1a5c59;
+  --teal-btn: #1a5c59;
 
   --font-money: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }

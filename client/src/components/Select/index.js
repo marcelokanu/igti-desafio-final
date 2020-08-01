@@ -1,8 +1,9 @@
 import React, { useState, useMemo } from 'react';
+import { PropagateLoader } from 'react-spinners';
 
 import api from '../../services/api';
 
-import { Container, BaseContent, SelectStyled } from './styles';
+import { Container, BaseContent, SelectStyled, Icon } from './styles';
 
 function Select(props) {
   const [monthsSelectData, setMonthsSelectData] = useState([]);
@@ -27,7 +28,7 @@ function Select(props) {
     switch (id) {
       case 'next':
         const nextMonth = monthsSelectData.find(
-          (month, index) => index === findDate + 1
+          (_, index) => index === findDate + 1
         );
         if (nextMonth) {
           props.onChange(nextMonth.month);
@@ -47,23 +48,40 @@ function Select(props) {
   };
   return (
     <Container>
-      <i className="material-icons" onClick={handleNavigate} id="prev">
-        chevron_left
-      </i>
-      <BaseContent>
-        <SelectStyled value={props.value} onChange={handleChangeMonth}>
-          {monthsSelectData.map(({ month, formattedMonth }) => {
-            return (
-              <option key={month} value={month}>
-                {formattedMonth}
-              </option>
-            );
-          })}
-        </SelectStyled>
-      </BaseContent>
-      <i className="material-icons" onClick={handleNavigate} id="next">
-        chevron_right
-      </i>
+      {monthsSelectData.length === 0 ? (
+        <PropagateLoader color={'var(--purple-bg)'} />
+      ) : (
+        <>
+          <Icon
+            className="material-icons"
+            onClick={handleNavigate}
+            side="left"
+            id="prev"
+          >
+            chevron_left
+          </Icon>
+
+          <BaseContent>
+            <SelectStyled value={props.value} onChange={handleChangeMonth}>
+              {monthsSelectData.map(({ month, formattedMonth }) => {
+                return (
+                  <option key={month} value={month}>
+                    {formattedMonth}
+                  </option>
+                );
+              })}
+            </SelectStyled>
+          </BaseContent>
+          <Icon
+            className="material-icons"
+            onClick={handleNavigate}
+            id="next"
+            side="right"
+          >
+            chevron_right
+          </Icon>
+        </>
+      )}
     </Container>
   );
 }

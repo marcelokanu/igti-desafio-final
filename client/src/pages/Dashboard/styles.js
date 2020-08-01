@@ -57,11 +57,10 @@ export const BoxSearch = styled.div`
 `;
 
 export const Lancamentos = styled.span`
-  width: 100px;
   color: var(--white);
   margin-left: auto;
   background: var(--purple-bg);
-  padding: 0.25em 0.4em;
+  padding: 0.25em 0.6em;
   border-radius: 5px 5px 0 0;
   text-align: center;
   flex-shrink: 0;
@@ -101,7 +100,7 @@ export const Input = styled.input`
   }
 `;
 
-export const ButtonAdd = styled.div`
+export const ButtonAdd = styled.a`
   opacity: 0.8;
   position: fixed;
   border: none !important;

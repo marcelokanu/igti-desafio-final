@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 
+import { Link } from 'react-router-dom';
+
+import api from '../../services/api';
+import { groupArray } from '../../util';
+
 import { formatMoney, parseAndFormatDate, findIcon } from '../../util';
 import {
   Container,
@@ -12,9 +17,21 @@ import {
 } from './styles';
 
 import Button from '../Button';
+import { useEffect } from 'react';
 
-function ListTransactions({ transactionsGroupByDay }) {
+function ListTransactions({ transactions }) {
   const [openOption, setOpenOption] = useState({ id: '', visible: false });
+
+  const [transactionsGroupByDay, setTransactionsGroupByDay] = useState({});
+  const [transactionsChanged, setTransactionsChanged] = useState(transactions);
+
+  useEffect(() => {
+    setTransactionsChanged(transactions);
+  }, [transactions]);
+
+  useEffect(() => {
+    setTransactionsGroupByDay(groupArray(transactionsChanged, 'yearMonthDay'));
+  }, [transactionsChanged]);
 
   function toggleOption(id) {
     if (openOption.id === id && openOption.visible === true) {
@@ -24,16 +41,24 @@ function ListTransactions({ transactionsGroupByDay }) {
     }
   }
 
+  async function handleDeleteTransaction(id) {
+    const restTransactions = transactionsChanged.filter(
+      (transaction) => transaction._id !== id
+    );
+    api.deleteTransaction(id).then(() => {
+      setTransactionsChanged(restTransactions);
+    });
+  }
+
   return (
     <Container>
-      {Object.entries(transactionsGroupByDay).map((d) => {
-        const day = d[0];
-        const arrTransaction = d[1];
+      {Object.entries(transactionsGroupByDay).map((object) => {
+        const day = object[0];
+        const arrayTransactions = object[1];
         return (
           <Collection className="collection with-header" key={day}>
             <DayMonth>{parseAndFormatDate(day, 'dd/MM')}</DayMonth>
-
-            {arrTransaction.map((transaction) => {
+            {arrayTransactions.map((transaction) => {
               return (
                 <ListTransaction
                   className={transaction._id === openOption.id ? 'active' : ''}
@@ -58,11 +83,12 @@ function ListTransactions({ transactionsGroupByDay }) {
                   >
                     <i className="material-icons">keyboard_arrow_right</i>
                     <Button
+                      to={`/transaction/edit/${transaction._id}`}
                       color="var(--purple-btn)"
                       hovercolor="var(--purple-hover)"
                       textcolor="var(--white)"
                       hovertextcolor="var(--light-gray)"
-                      onClick={() => alert('editar')}
+                      as={Link}
                     >
                       <i className="material-icons" alt="editar">
                         edit
@@ -73,7 +99,11 @@ function ListTransactions({ transactionsGroupByDay }) {
                       hovercolor="var(--red-bg)"
                       textcolor="var(--white)"
                       hovertextcolor="var(--light-gray)"
-                      onClick={() => alert('excluir')}
+                      onClick={() =>
+                        window.confirm(
+                          `Apagar transação ${transaction._id}?`
+                        ) && handleDeleteTransaction(transaction._id)
+                      }
                     >
                       <i className="material-icons" alt="excluir">
                         delete

@@ -30,9 +30,9 @@ export const ListTransaction = styled.li`
   min-height: 55px;
   border-radius: 5px;
   align-items: center;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
   background-color: var(--white);
-  padding: 2px;
+  padding: 5px;
   border-bottom: 1px solid var(--light-gray);
   cursor: pointer;
   transition: 0.3s;
@@ -69,7 +69,7 @@ export const ListTransaction = styled.li`
             }
 
             i {
-              opacity: 0.3;
+              opacity: 0.5;
             }
           `
         : css`
@@ -81,6 +81,20 @@ export const ListTransaction = styled.li`
 
             i {
               opacity: 0.3;
+            }
+          `}
+  }
+
+  &.active {
+    ${(props) =>
+      props.transType === '-'
+        ? css`
+            border-right: 3px solid var(--red-bg);
+          `
+        : css`
+            border-right: 3px solid var(--teal-bg);
+            > span {
+              color: var(--primary);
             }
           `}
   }
@@ -98,7 +112,7 @@ export const BoxActions = styled.div`
   ${(props) =>
     props.actionVisible === true
       ? 'opacity: 1; width: auto; height: auto;'
-      : 'opacity: 0; width: 0; height: 0;}'};
+      : 'opacity: 0; width: 0; height: 0;'}
 
   @media (max-width: 400px) {
     display: flex;
@@ -139,7 +153,7 @@ export const CategoryDescription = styled.div`
 export const Value = styled.div`
   strong {
     font-weight: bold;
-    font-family: Consolas, monospace;
+    font-family: var(--font-money);
     color: var(--primary);
     @media (max-width: 300px) {
       font-size: 12px;

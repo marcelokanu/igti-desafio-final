@@ -4,21 +4,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  > i {
-    cursor: pointer;
-    color: #6934a8;
-    font-size: 5rem;
-    transition: 0.3s;
-
-    &:hover {
-      color: #fb8c00;
-    }
-
-    @media (max-width: 350px) {
-      font-size: 3rem;
-    }
-  }
+  margin: 20px 0;
 `;
 
 export const BaseSelect = styled.select`
@@ -33,15 +19,12 @@ export const BaseSelect = styled.select`
   box-shadow: none;
   border: 0 !important;
   text-align-last: center;
-  background: var(--purple-bg);
+  background: var(--purple-hover);
   background-image: none;
 
   &::-ms-expand {
     display: none;
-  }
-
-  &.active {
-    color: red;
+    overflow: hidden;
   }
 
   @media (max-width: 350px) {
@@ -52,11 +35,9 @@ export const BaseSelect = styled.select`
 export const BaseContent = styled.div`
   position: relative;
   display: flex;
-  width: 15rem;
+
   height: 3em;
   line-height: 3;
-  overflow: hidden;
-  border-radius: 0.25em;
   overflow: hidden;
 `;
 
@@ -65,4 +46,27 @@ export const SelectStyled = styled(BaseSelect)`
   padding: 0 0.5em;
   color: #fff;
   cursor: pointer;
+  transition: 0.3s;
+`;
+
+export const Icon = styled.i`
+  cursor: pointer;
+
+  color: var(--white);
+  background-color: var(--purple-hover);
+  font-size: 3rem;
+  transition: 0.3s;
+
+  ${(props) =>
+    props.side === 'left'
+      ? 'border-radius: 5px 0 0 5px'
+      : 'border-radius: 0 5px 5px 0'};
+
+  &:hover {
+    color: var(--orange);
+  }
+
+  @media (max-width: 350px) {
+    font-size: 3rem;
+  }
 `;

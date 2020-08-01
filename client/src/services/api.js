@@ -12,10 +12,15 @@ const updateTransaction = (id, data) => {
   return http.patch('api/transaction/update/:id');
 };
 
+const deleteTransaction = (id) => {
+  return http.delete(`api/transaction/delete/${id}`);
+};
+
 export default {
   findByPeriod,
   loadYearMonths,
   updateTransaction,
+  deleteTransaction,
 };
 
 // transactionRouter.get('/api/transaction', findByPeriod);
@@ -27,7 +32,5 @@ export default {
 // transactionRouter.post('/api/transaction/create', createTransaction);
 
 // transactionRouter.patch('/api/transaction/update/:id', updateTransaction);
-
-// transactionRouter.delete('/api/transaction/delete/:id', deleteTransaction);
 
 // transactionRouter.get('/api/transaction/reset/:type', importJson);

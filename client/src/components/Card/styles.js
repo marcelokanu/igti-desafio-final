@@ -43,16 +43,19 @@ export const CardContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
   grid-column-gap: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   @media (max-width: 700px) {
-    margin-top: 0;
+    margin: 5px 10px 5px;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
 `;
 
 export const Card = styled.div`
-  ${({ type }) => handleBackColor(type)};
+  background: ${({ type }) => handleBackColor(type)};
   border-top: ${({ type }) => `5px solid ${handleColor(type)}`};
   padding: 10px 25px;
   border-radius: 5px;
@@ -61,6 +64,7 @@ export const Card = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     > p {
       font-size: 16px;
     }
@@ -71,7 +75,6 @@ export const Card = styled.div`
     }
   }
   > h1 {
-    overflow-wrap: break-word;
     margin: 0;
     font-size: 26px;
     font-weight: normal;
@@ -79,7 +82,6 @@ export const Card = styled.div`
 
   @media (max-width: 900px) {
     padding: 10px;
-    border-top: ${({ type }) => `5px solid ${handleColor(type)}`};
 
     > header {
       > p {
@@ -96,16 +98,32 @@ export const Card = styled.div`
   }
 
   @media (max-width: 700px) {
-    align-items: center;
-    justify-content: center;
     background: transparent;
-    color: white;
+    padding: 0;
+    margin: 2px;
+
+    color: var(--white);
     border-top: 0;
-    border-bottom: ${({ type }) => `5px solid ${handleColor(type)}`};
-    margin-bottom: 10px;
+    border-bottom: ${({ type }) => `1px solid ${handleColor(type)}`};
+    border-left: ${({ type }) => `3px solid ${handleColor(type)}`};
+
+    > header {
+      > i {
+        padding: 3px;
+      }
+      > p {
+        font-size: 14px;
+        margin-left: 10px;
+      }
+    }
 
     > h1 {
-      margin-top: 5px;
+      text-align: right;
+      margin: 3px;
     }
+  }
+
+  &:last-child {
+    margin-bottom: 5px;
   }
 `;
