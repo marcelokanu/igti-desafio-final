@@ -45,6 +45,25 @@ html {
   
 }
 
+.ReactModal__Overlay {
+  opacity: 0;
+  bottom: -100% !important;
+  transform: translateX(-100px);
+  transition: bottom 0.5s ease-in-out;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+  transform: translateX(0px);
+  bottom: 0 !important;
+}
+
+.ReactModal__Overlay--before-close {
+  bottom: 0 !important;
+  transform: translateX(-100px);
+}
+
+
 :root {
   --white: #FFFFFF;
   --bg: #f5f5f5;

@@ -1,14 +1,15 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
 
 import GlobalStyles from './styles/GlobalStyles';
-import Routes from './routes';
+import { ToastProvider } from 'react-toast-notifications';
+
+import Dashboard from './pages/Dashboard';
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes />
+    <ToastProvider>
+      <Dashboard />
       <GlobalStyles />
-    </BrowserRouter>
+    </ToastProvider>
   );
 }

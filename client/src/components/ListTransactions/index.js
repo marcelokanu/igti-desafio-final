@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 
-import { Link } from 'react-router-dom';
-
-import api from '../../services/api';
 import { groupArray } from '../../util';
 
 import { formatMoney, parseAndFormatDate, findIcon } from '../../util';
@@ -19,19 +16,19 @@ import {
 import Button from '../Button';
 import { useEffect } from 'react';
 
-function ListTransactions({ transactions }) {
+function ListTransactions({
+  transactions,
+  handleDeleteTransaction,
+  handleEditTransaction,
+}) {
   const [openOption, setOpenOption] = useState({ id: '', visible: false });
 
   const [transactionsGroupByDay, setTransactionsGroupByDay] = useState({});
-  const [transactionsChanged, setTransactionsChanged] = useState(transactions);
 
   useEffect(() => {
-    setTransactionsChanged(transactions);
+    const transactionsGroupedByDay = groupArray(transactions, 'yearMonthDay');
+    setTransactionsGroupByDay(transactionsGroupedByDay);
   }, [transactions]);
-
-  useEffect(() => {
-    setTransactionsGroupByDay(groupArray(transactionsChanged, 'yearMonthDay'));
-  }, [transactionsChanged]);
 
   function toggleOption(id) {
     if (openOption.id === id && openOption.visible === true) {
@@ -41,13 +38,12 @@ function ListTransactions({ transactions }) {
     }
   }
 
-  async function handleDeleteTransaction(id) {
-    const restTransactions = transactionsChanged.filter(
-      (transaction) => transaction._id !== id
-    );
-    api.deleteTransaction(id).then(() => {
-      setTransactionsChanged(restTransactions);
-    });
+  function setDeleteTransaction(id) {
+    handleDeleteTransaction(id);
+  }
+
+  function setEditingTransaction(transaction) {
+    handleEditTransaction(transaction);
   }
 
   return (
@@ -83,12 +79,11 @@ function ListTransactions({ transactions }) {
                   >
                     <i className="material-icons">keyboard_arrow_right</i>
                     <Button
-                      to={`/transaction/edit/${transaction._id}`}
+                      onClick={() => setEditingTransaction(transaction)}
                       color="var(--purple-btn)"
                       hovercolor="var(--purple-hover)"
                       textcolor="var(--white)"
                       hovertextcolor="var(--light-gray)"
-                      as={Link}
                     >
                       <i className="material-icons" alt="editar">
                         edit
@@ -102,7 +97,7 @@ function ListTransactions({ transactions }) {
                       onClick={() =>
                         window.confirm(
                           `Apagar transação ${transaction._id}?`
-                        ) && handleDeleteTransaction(transaction._id)
+                        ) && setDeleteTransaction(transaction._id)
                       }
                     >
                       <i className="material-icons" alt="excluir">

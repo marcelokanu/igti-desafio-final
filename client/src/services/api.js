@@ -8,8 +8,12 @@ const loadYearMonths = () => {
   return http.get('api/transaction/months');
 };
 
+const createTransaction = (data) => {
+  return http.post('api/transaction/create', data);
+};
+
 const updateTransaction = (id, data) => {
-  return http.patch('api/transaction/update/:id');
+  return http.patch(`api/transaction/update/${id}`, data);
 };
 
 const deleteTransaction = (id) => {
@@ -19,18 +23,11 @@ const deleteTransaction = (id) => {
 export default {
   findByPeriod,
   loadYearMonths,
+  createTransaction,
   updateTransaction,
   deleteTransaction,
 };
 
-// transactionRouter.get('/api/transaction', findByPeriod);
-
-// transactionRouter.get('/api/transaction/months', loadYearMonths);
-
 // transactionRouter.get('/api/transaction/categories', loadCategories);
 
-// transactionRouter.post('/api/transaction/create', createTransaction);
-
 // transactionRouter.patch('/api/transaction/update/:id', updateTransaction);
-
-// transactionRouter.get('/api/transaction/reset/:type', importJson);
