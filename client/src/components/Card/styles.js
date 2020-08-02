@@ -41,16 +41,17 @@ export const CardContainer = styled.div`
   text-align: left;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(30%, 3fr));
   grid-column-gap: 20px;
+  grid-auto-flow: column;
+  flex-shrink: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-
   @media (max-width: 700px) {
-    margin: 5px 10px 5px;
-    display: flex;
-    flex-direction: column;
+    margin: 0;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-flow: dense;
   }
 `;
 
@@ -60,6 +61,9 @@ export const Card = styled.div`
   padding: 10px 25px;
   border-radius: 5px;
   color: ${({ type }) => handleFontColor(type)};
+  > h1 {
+    font-size: 1.5em;
+  }
   > header {
     display: flex;
     align-items: center;
@@ -74,10 +78,57 @@ export const Card = styled.div`
       color: ${({ type }) => handleColor(type)};
     }
   }
-  > h1 {
-    margin: 0;
-    font-size: 26px;
-    font-weight: normal;
+
+  @media (max-width: 700px) {
+    background: transparent;
+    padding: 0;
+    margin: 2px;
+
+    color: var(--white);
+    border-top: 0;
+
+    border-bottom: ${({ type }) => `3px solid ${handleColor(type)}`};
+    border-left: ${({ type }) => `1px solid ${handleColor(type)}`};
+
+    &:first-child {
+      border-left: 0;
+      border-right: ${({ type }) => `1px solid ${handleColor(type)}`};
+    }
+
+    > header {
+      > i {
+        padding: 3px;
+      }
+      > p {
+        margin-left: 10px;
+      }
+    }
+
+    > h1 {
+      text-align: right;
+      margin: 3px;
+      font-size: 12px;
+    }
+
+    &:last-child {
+      padding: 0;
+      grid-column: span 2;
+      border: 0;
+      justify-content: center;
+      > h1 {
+        text-align: center;
+        margin: 0;
+        font-size: 18px;
+      }
+
+      > header {
+        justify-content: center;
+        > p {
+          font-size: 17px;
+          margin: 0;
+        }
+      }
+    }
   }
 
   @media (max-width: 900px) {
@@ -95,35 +146,5 @@ export const Card = styled.div`
     > h1 {
       font-size: 15px;
     }
-  }
-
-  @media (max-width: 700px) {
-    background: transparent;
-    padding: 0;
-    margin: 2px;
-
-    color: var(--white);
-    border-top: 0;
-    border-bottom: ${({ type }) => `1px solid ${handleColor(type)}`};
-    border-left: ${({ type }) => `3px solid ${handleColor(type)}`};
-
-    > header {
-      > i {
-        padding: 3px;
-      }
-      > p {
-        font-size: 14px;
-        margin-left: 10px;
-      }
-    }
-
-    > h1 {
-      text-align: right;
-      margin: 3px;
-    }
-  }
-
-  &:last-child {
-    margin-bottom: 5px;
   }
 `;

@@ -86,6 +86,7 @@ export const ListTransaction = styled.li`
   }
 
   &.active {
+    z-index: 0;
     ${(props) =>
       props.transType === '-'
         ? css`

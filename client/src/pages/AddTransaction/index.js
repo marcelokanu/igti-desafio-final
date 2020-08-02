@@ -1,6 +1,6 @@
 import React, { useRef, useCallback } from 'react';
 import * as Yup from 'yup';
-import { Container, Title, Form, Row, Label } from './styles';
+import { Container, ButtonClose, Title, Form, Row, Label } from './styles';
 
 import Input from '../../components/Form/Input';
 import InputRadio from '../../components/Form/InputRadio';
@@ -52,6 +52,9 @@ const ModalAddTransaction = ({ isOpen, setIsOpen, handleAddTransaction }) => {
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <Container>
+        <ButtonClose onClick={() => setIsOpen()}>
+          <i className="material-icons">close</i>
+        </ButtonClose>
         <Title>Nova Transação</Title>
         <Form ref={formRef} onSubmit={handleSubmit} initialData={{ type: '+' }}>
           <Row>

@@ -36,6 +36,7 @@ html, body, root {
   border: 0;
   background: none;
   cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 
   font-family: --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
 }
@@ -61,6 +62,16 @@ html {
 .ReactModal__Overlay--before-close {
   bottom: 0 !important;
   transform: translateX(-100px);
+}
+
+.Toastify__toast--dark {
+  background: var(--purple-hover);
+  border-radius: 4px;
+}
+
+.Toastify__toast--warning {
+  color: var(--primary);
+  border-radius: 4px;
 }
 
 

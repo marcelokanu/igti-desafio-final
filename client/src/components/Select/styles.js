@@ -2,9 +2,14 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
+
   justify-content: center;
   align-items: center;
-  margin: 20px 0;
+  padding: 10px 0;
+
+  @media (max-width: 440px) {
+    padding: 0;
+  }
 `;
 
 export const BaseSelect = styled.select`
@@ -17,43 +22,47 @@ export const BaseSelect = styled.select`
   appearance: none;
   outline: 0;
   box-shadow: none;
-  border: 0 !important;
   text-align-last: center;
-  background: var(--purple-hover);
+
+  background: var(--purple-bg);
   background-image: none;
 
   &::-ms-expand {
     display: none;
     overflow: hidden;
   }
-
-  @media (max-width: 350px) {
-    font-size: 15px;
-  }
 `;
 
 export const BaseContent = styled.div`
   position: relative;
   display: flex;
-
+  border-top: 5px solid var(--purple-hover);
   height: 3em;
   line-height: 3;
   overflow: hidden;
+
+  @media (max-width: 440px) {
+    width: 100%;
+  }
 `;
 
 export const SelectStyled = styled(BaseSelect)`
   flex: 1;
   padding: 0 0.5em;
-  color: #fff;
+  color: var(--light-gray);
+
   cursor: pointer;
   transition: 0.3s;
 `;
 
 export const Icon = styled.i`
   cursor: pointer;
-
-  color: var(--white);
-  background-color: var(--purple-hover);
+  box-sizing: border-box !important;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  color: var(--purple-btn);
+  border-top: 5px solid var(--purple-hover);
+  background-color: var(--purple-bg);
   font-size: 3rem;
   transition: 0.3s;
 
@@ -64,9 +73,5 @@ export const Icon = styled.i`
 
   &:hover {
     color: var(--orange);
-  }
-
-  @media (max-width: 350px) {
-    font-size: 3rem;
   }
 `;

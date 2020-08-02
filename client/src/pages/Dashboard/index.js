@@ -1,7 +1,9 @@
 import React, { useState, useMemo, useEffect } from 'react';
 
 import { BarLoader } from 'react-spinners';
-import { useToasts } from 'react-toast-notifications';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import StickyBox from 'react-sticky-box';
 
 import api from '../../services/api';
 import { currentMonthYear } from '../../util';
@@ -15,6 +17,7 @@ import EditTransaction from '../EditTransaction';
 import {
   Container,
   Wrapper,
+  Title,
   Header,
   BoxSearch,
   Input,
@@ -36,7 +39,15 @@ function Dashboard() {
   const [modalOpen, setModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
 
-  const { addToast } = useToasts();
+  const toastOptions = {
+    position: 'top-right',
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  };
 
   useMemo(() => {
     async function loadTransactions() {
@@ -110,10 +121,7 @@ function Dashboard() {
       setTransactions([...transactions, response.data]);
 
       const typeToast = transaction.type[0] === '+' ? 'Receita' : 'Despesa';
-      addToast(`${typeToast} salva com sucesso`, {
-        appearance: 'success',
-        autoDismiss: true,
-      });
+      toast.dark(`${typeToast} salva com sucesso.`, toastOptions);
     } catch (err) {
       console.log(err);
     }
@@ -127,11 +135,10 @@ function Dashboard() {
     );
 
     setTransactions(transactionToDelete);
-
-    addToast(`Transação ${editingTransaction._id} excluida com sucesso`, {
-      appearance: 'warning',
-      autoDismiss: true,
-    });
+    toast.warning(
+      `Transação ${editingTransaction._id} excluída com sucesso.`,
+      toastOptions
+    );
   };
 
   function handleEditTransaction(transaction) {
@@ -162,10 +169,7 @@ function Dashboard() {
       setTransactions(transactionToUpdate);
 
       const typeToast = transaction.type === '+' ? 'Receita' : 'Despesa';
-      addToast(`${typeToast} salva com sucesso`, {
-        appearance: 'success',
-        autoDismiss: true,
-      });
+      toast.dark(`${typeToast} salva com sucesso.`, toastOptions);
     } catch (err) {
       console.log(err);
     }
@@ -173,15 +177,17 @@ function Dashboard() {
 
   return (
     <Container>
+      <ToastContainer />
       <ButtonAdd onClick={toggleModal}>
         <i className="material-icons">add</i>
       </ButtonAdd>
-      <Header>
-        <h1>Desafio Final do Bootcamp Full Stack</h1>
-        <Select value={monthSelected} onChange={handleChangeMonth} />
-        <Card data={filteredTransactions} />
-      </Header>
-
+      <Title>Desafio Final do Bootcamp Full Stack</Title>
+      <StickyBox offsetBottom={20}>
+        <Header>
+          <Select value={monthSelected} onChange={handleChangeMonth} />
+          <Card data={filteredTransactions} />
+        </Header>
+      </StickyBox>
       {loaded ? (
         <Wrapper>
           <BoxSearch>

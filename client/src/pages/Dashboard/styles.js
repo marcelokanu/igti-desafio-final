@@ -13,18 +13,30 @@ export const Wrapper = styled.div`
   justify-content: center;
 `;
 
-export const Header = styled.header`
-  background: var(--header-bg-initial-gradient);
+export const Title = styled.h1`
+  background: var(--header-bg-final-gradient);
+  font-size: 1.5rem;
+  color: var(--white);
   text-align: center;
+
+  @media (max-width: 440px) {
+    display: none;
+  }
+`;
+
+export const Header = styled.header`
+  text-align: center;
+  border-radius: 0 0 4px 4px;
+
   background: -moz-linear-gradient(
     0deg,
-    var(--header-bg-initial-gradient) 0%,
-    var(--header-bg-final-gradient) 100%
+    var(--header-bg-final-gradient) 100%,
+    var(--header-bg-initial-gradient) 0%
   );
   background: -webkit-linear-gradient(
     0deg,
-    var(--header-bg-initial-gradient) 0%,
-    var(--header-bg-final-gradient) 100%
+    var(--header-bg-final-gradient) 100%,
+    var(--header-bg-initial-gradient) 0%
   );
   background: linear-gradient(
     0deg,
@@ -34,17 +46,7 @@ export const Header = styled.header`
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#834ac8",endColorstr="#291344",GradientType=1);
 
   @media (min-width: 700px) {
-    height: 200px;
-  }
-
-  > h1 {
-    font-size: 1.5rem;
-    color: var(--white);
-    padding: 10px 0;
-
-    @media (max-width: 440px) {
-      font-size: 1rem;
-    }
+    height: 130px;
   }
 `;
 
@@ -54,6 +56,10 @@ export const BoxSearch = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 700px) {
+    margin: 5px 10px;
+  }
 `;
 
 export const Lancamentos = styled.span`
@@ -109,13 +115,12 @@ export const ButtonAdd = styled.a`
   bottom: 10px;
   padding: 15px;
   margin-bottom: 0;
-  z-index: 997;
 
   i {
     border: none;
     display: inline-block;
     color: #fff;
-    background-color: #4a148c;
+    background-color: var(--purple-btn);
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -132,6 +137,28 @@ export const ButtonAdd = styled.a`
   }
 
   i:hover {
-    background: #662bad;
+    background: var(--purple-hover);
+  }
+
+  @media (max-width: 768px) {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--purple-bg);
+    border-radius: 0;
+    border: 0;
+    text-align: center;
+    opacity: 0.8;
+    box-sizing: border-box;
+    color: var(--white);
+
+    &::before {
+      content: 'Nova transação';
+    }
+
+    i {
+      display: none;
+    }
   }
 `;

@@ -24,6 +24,7 @@ const Modal = ({ children, isOpen, setIsOpen }) => {
           bottom: 'auto',
           boxSizing: 'border-box',
           marginRight: '-50%',
+          minWidth: '315px',
           transform: 'translate(-50%, -50%)',
           background: 'var(--white)',
           borderRadius: '8px',
