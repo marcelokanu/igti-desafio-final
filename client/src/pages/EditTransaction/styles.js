@@ -3,6 +3,17 @@ import { Form as Unform } from '@unform/web';
 
 export const Container = styled.div``;
 
+export const ButtonClose = styled.a`
+  > i {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: var(--white);
+    font-size: 20px;
+    background-color: var(--red-bg);
+  }
+`;
+
 export const Title = styled.h1`
   text-align: center;
   font-size: 18px;

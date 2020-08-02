@@ -6,11 +6,10 @@ export const Container = styled.div``;
 export const ButtonClose = styled.a`
   > i {
     position: absolute;
-    right: 2px;
-    top: 2px;
+    right: 0;
+    top: 0;
     color: var(--white);
-    border-radius: 4px;
-    padding: 5px;
+    font-size: 20px;
     background-color: var(--red-bg);
   }
 `;
