@@ -36,7 +36,6 @@ const handleFontColor = (type) => {
 };
 
 export const CardContainer = styled.div`
-  min-height: 50%;
   max-width: 1280px;
   text-align: left;
   margin: 0 auto;
@@ -133,8 +132,6 @@ export const Card = styled.div`
   }
 
   @media (max-width: 900px) {
-    padding: 10px;
-
     > header {
       > p {
         font-size: 16px;

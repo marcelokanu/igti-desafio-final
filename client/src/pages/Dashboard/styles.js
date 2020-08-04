@@ -4,33 +4,67 @@ export const Container = styled.div`
   background: var(--bg);
 `;
 
+export const ButtonAdd = styled.a`
+  i {
+  }
+
+  i:hover {
+    background: var(--purple-hover);
+  }
+
+  @media (max-width: 768px) {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--purple-bg);
+    border-radius: 0;
+    border: 0;
+    text-align: center;
+    opacity: 0.8;
+    box-sizing: border-box;
+    color: var(--white);
+
+    &::before {
+      content: 'Nova transação';
+    }
+
+    i {
+      display: none;
+    }
+  }
+`;
+
+export const WrapperMenu = styled.div`
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+`;
+
 export const Menu = styled.div`
   background: var(--purple-bg);
   border-top: 4px solid var(--orange);
 
-  > div {
-    h1 {
-      display: flex;
-      align-items: center;
-      margin: 10px;
-      font-size: 2rem;
-      color: var(--white);
+  h1 {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    font-size: 2rem;
+    color: var(--white);
 
-      > i {
-        font-size: 2rem;
-      }
+    > i {
+      font-size: 2rem;
     }
 
     width: 100%;
   }
   @media (max-width: 700px) {
-    > div {
-      h1 {
-        justify-content: center;
+    h1 {
+      justify-content: center;
+      font-size: 1.3rem;
+      > i {
         font-size: 1.3rem;
-        > i {
-          font-size: 1.3rem;
-        }
       }
     }
   }
@@ -117,61 +151,5 @@ export const Input = styled.input`
     border-left: 3px solid var(--purple-hover) !important;
     border-right: 3px solid var(--purple-hover) !important;
     background: #ffffff;
-  }
-`;
-
-export const ButtonAdd = styled.a`
-  opacity: 0.8;
-  position: fixed;
-  border: none !important;
-  right: 10px;
-  bottom: 10px;
-  padding: 15px;
-  margin-bottom: 0;
-
-  i {
-    border: none;
-    display: inline-block;
-    color: #fff;
-    background-color: var(--purple-btn);
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    padding: 0;
-    border-radius: 50%;
-    transition: background-color 0.3s;
-    cursor: pointer;
-    vertical-align: middle;
-    text-align: center;
-    color: #fff;
-  }
-
-  i:hover {
-    background: var(--purple-hover);
-  }
-
-  @media (max-width: 768px) {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--purple-bg);
-    border-radius: 0;
-    border: 0;
-    text-align: center;
-    opacity: 0.8;
-    box-sizing: border-box;
-    color: var(--white);
-
-    &::before {
-      content: 'Nova transação';
-    }
-
-    i {
-      display: none;
-    }
   }
 `;
