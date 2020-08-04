@@ -1,9 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Mark = styled.span`
   display: inline-block;
   position: relative;
-  border: 2px solid var(--secondary);
+  border: 2px solid var(--purple-bg);
   width: 19px;
   height: 19px;
   left: 0;
@@ -16,8 +16,16 @@ export const Mark = styled.span`
     width: 0;
     height: 0;
     border-radius: 50%;
-    background-color: var(--purple-hover);
-    opacity: 0;
+
+    ${(props) =>
+      props.typeTransaction === '-'
+        ? css`
+            background-color: var(--red-bg);
+          `
+        : css`
+            background-color: var(--teal-bg);
+          `}
+
     left: 50%;
     top: 50%;
     position: absolute;

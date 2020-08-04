@@ -94,10 +94,11 @@ export default function BoxInfos(props) {
             end={calcValues.balance}
             duration={1}
             separator="."
+            redraw={false}
             decimals={2}
             decimal=","
             prefix="R$ "
-            useEasing={true}
+            useEasing={false}
           />
         </h1>
       </Card>

@@ -84,7 +84,7 @@ export const Card = styled.div`
     padding: 0;
     margin: 2px;
 
-    color: var(--white);
+    color: var(--light-gray);
     border-top: 0;
 
     border-bottom: ${({ type }) => `3px solid ${handleColor(type)}`};
@@ -111,9 +111,10 @@ export const Card = styled.div`
     }
 
     &:last-child {
+      border: 0;
       padding: 0;
       grid-column: span 2;
-      border: 0;
+
       justify-content: center;
       > h1 {
         text-align: center;

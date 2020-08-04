@@ -1,10 +1,11 @@
 import React, { useRef, useCallback } from 'react';
 import * as Yup from 'yup';
-import { Container, ButtonClose, Title, Form, Row, Label } from './styles';
+import { Container, ButtonClose, Form, Row, Label } from './styles';
 
 import Input from '../../components/Form/Input';
 import InputRadio from '../../components/Form/InputRadio';
 import Modal from '../../components/Modal';
+import Header from '../../components/Form/Header';
 
 const ModalEditTransaction = ({
   isOpen,
@@ -30,7 +31,10 @@ const ModalEditTransaction = ({
           description: Yup.string().required('Descrição é obrigatória'),
           yearMonthDay: Yup.string().required('Data é obrigatória'),
           value: Yup.number('Valor deve ser numérico')
-            .max(9999999999, 'O valor máximo é de 9999999999')
+            .max(
+              9999999999999999999999,
+              'O valor máximo é de 9999999999999999999999'
+            )
             .min(0.01, 'Valor deve ser maior que 0.01')
             .required('Valor é obrigatória'),
         });
@@ -60,7 +64,7 @@ const ModalEditTransaction = ({
         <ButtonClose onClick={() => setIsOpen()}>
           <i className="material-icons">close</i>
         </ButtonClose>
-        <Title>Editar Transação</Title>
+        <Header>Editar Transação</Header>
         <Form
           ref={formRef}
           onSubmit={handleSubmit}

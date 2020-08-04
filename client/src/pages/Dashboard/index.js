@@ -16,8 +16,8 @@ import EditTransaction from '../EditTransaction';
 
 import {
   Container,
+  Menu,
   Wrapper,
-  Title,
   Header,
   BoxSearch,
   Input,
@@ -121,7 +121,7 @@ function Dashboard() {
       setTransactions([...transactions, response.data]);
 
       const typeToast = transaction.type[0] === '+' ? 'Receita' : 'Despesa';
-      toast.dark(`${typeToast} salva com sucesso.`, toastOptions);
+      toast.success(`${typeToast} salva com sucesso.`, toastOptions);
     } catch (err) {
       console.log(err);
     }
@@ -169,7 +169,7 @@ function Dashboard() {
       setTransactions(transactionToUpdate);
 
       const typeToast = transaction.type === '+' ? 'Receita' : 'Despesa';
-      toast.dark(`${typeToast} salva com sucesso.`, toastOptions);
+      toast.success(`${typeToast} salva com sucesso.`, toastOptions);
     } catch (err) {
       console.log(err);
     }
@@ -178,12 +178,19 @@ function Dashboard() {
   return (
     <Container>
       <ToastContainer />
-      <ButtonAdd onClick={toggleModal}>
-        <i className="material-icons">add</i>
-      </ButtonAdd>
-      <Title>Desafio Final do Bootcamp Full Stack</Title>
+
+      <Menu>
+        <Wrapper>
+          <h1>
+            <i className="material-icons">attach_money</i>bios_money
+          </h1>
+        </Wrapper>
+      </Menu>
       <StickyBox offsetBottom={20}>
         <Header>
+          <ButtonAdd onClick={toggleModal}>
+            <i className="material-icons">add</i>
+          </ButtonAdd>
           <Select value={monthSelected} onChange={handleChangeMonth} />
           <Card data={filteredTransactions} />
         </Header>

@@ -6,26 +6,23 @@ export const Container = styled.div``;
 export const ButtonClose = styled.a`
   > i {
     position: absolute;
+    cursor: pointer;
     right: 0;
     top: 0;
     color: var(--white);
-    font-size: 20px;
-    background-color: var(--red-bg);
+    font-size: 30px;
+    background-color: var(--red-btn);
+    &:hover {
+      background-color: var(--red-bg);
+    }
   }
-`;
-
-export const Title = styled.h1`
-  text-align: center;
-  font-size: 18px;
-  color: var(--white);
-  background: var(--purple-bg);
 `;
 
 export const Form = styled(Unform)`
   margin: 0 !important;
-  background: var(--light-gray);
+  background: var(--bg);
 
-  padding: 4rem;
+  padding: 2rem;
 
   @media (max-width: 400px) {
     padding: 0.5rem;
@@ -35,18 +32,18 @@ export const Form = styled(Unform)`
   button {
     margin-top: 10px;
     width: 100%;
-    background: #4a148c;
+    background: var(--purple-btn);
     color: white;
     border-radius: 5px;
     height: 40px;
     color: white;
     font-size: 1.1rem;
     font-weight: bold;
-    border: 1px solid var(--light-gray);
+    border: 1px solid var(--bg);
     cursor: pointer;
     transition: 0.3s;
     &:hover {
-      background: #662bad;
+      background: var(--purple-hover);
     }
   }
 `;
@@ -62,7 +59,7 @@ export const Label = styled.label`
   color: var(--white);
 
   background: var(--purple-hover);
-  padding: 1px 10px 0;
+  padding: 0.25em 0.6em;
   border-radius: 5px 5px 0 0;
   text-align: center;
 

@@ -39,7 +39,7 @@ const InputRadio = ({ name, options, ...rest }) => {
               {...rest}
               defaultChecked={defaultValue === option.id}
             />
-            <Mark />
+            <Mark typeTransaction={option.id} />
             <span>{option.label}</span>
           </Label>
         </RadioWrapper>

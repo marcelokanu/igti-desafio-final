@@ -4,6 +4,38 @@ export const Container = styled.div`
   background: var(--bg);
 `;
 
+export const Menu = styled.div`
+  background: var(--purple-bg);
+  border-top: 4px solid var(--orange);
+
+  > div {
+    h1 {
+      display: flex;
+      align-items: center;
+      margin: 10px;
+      font-size: 2rem;
+      color: var(--white);
+
+      > i {
+        font-size: 2rem;
+      }
+    }
+
+    width: 100%;
+  }
+  @media (max-width: 700px) {
+    > div {
+      h1 {
+        justify-content: center;
+        font-size: 1.3rem;
+        > i {
+          font-size: 1.3rem;
+        }
+      }
+    }
+  }
+`;
+
 export const Wrapper = styled.div`
   height: 100%;
   max-width: 1280px;
@@ -13,40 +45,21 @@ export const Wrapper = styled.div`
   justify-content: center;
 `;
 
-export const Title = styled.h1`
-  background: var(--header-bg-final-gradient);
-  font-size: 1.5rem;
-  color: var(--white);
-  text-align: center;
-
-  @media (max-width: 440px) {
-    display: none;
-  }
-`;
+export const Title = styled.h1``;
 
 export const Header = styled.header`
   text-align: center;
   border-radius: 0 0 4px 4px;
 
-  background: -moz-linear-gradient(
-    0deg,
-    var(--header-bg-final-gradient) 100%,
-    var(--header-bg-initial-gradient) 0%
-  );
-  background: -webkit-linear-gradient(
-    0deg,
-    var(--header-bg-final-gradient) 100%,
-    var(--header-bg-initial-gradient) 0%
-  );
-  background: linear-gradient(
-    0deg,
-    rgba(131, 74, 200, 1) 0%,
-    rgba(41, 19, 68, 1) 100%
-  );
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#834ac8",endColorstr="#291344",GradientType=1);
+  background: var(--purple-bg);
 
   @media (min-width: 700px) {
     height: 130px;
+  }
+
+  @media (max-width: 700px) {
+    display: flex;
+    flex-direction: column;
   }
 `;
 

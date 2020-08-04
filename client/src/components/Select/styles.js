@@ -7,7 +7,7 @@ export const Container = styled.div`
   align-items: center;
   padding: 10px 0;
 
-  @media (max-width: 440px) {
+  @media (max-width: 700px) {
     padding: 0;
   }
 `;
@@ -36,14 +36,10 @@ export const BaseSelect = styled.select`
 export const BaseContent = styled.div`
   position: relative;
   display: flex;
-  border-top: 5px solid var(--purple-hover);
   height: 3em;
   line-height: 3;
   overflow: hidden;
-
-  @media (max-width: 440px) {
-    width: 100%;
-  }
+  max-width: 140px;
 `;
 
 export const SelectStyled = styled(BaseSelect)`
@@ -60,8 +56,7 @@ export const Icon = styled.i`
   box-sizing: border-box !important;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  color: var(--purple-btn);
-  border-top: 5px solid var(--purple-hover);
+  color: var(--white);
   background-color: var(--purple-bg);
   font-size: 3rem;
   transition: 0.3s;

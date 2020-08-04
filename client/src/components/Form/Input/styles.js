@@ -4,7 +4,7 @@ export const Container = styled.div`
   position: relative;
   > input {
     border: none;
-    width: 100%;
+    min-width: 100%;
     background: var(--white);
     box-sizing: border-box;
 
@@ -38,13 +38,13 @@ export const Container = styled.div`
     color: var(--white);
 
     background: var(--red-bg);
-    padding: 0 5px;
+
     border-radius: 0 5px 0 5px;
     text-align: center;
 
     position: absolute;
     opacity: 0.6;
     right: 0;
-    top: 0;
+    top: -0;
   }
 `;
