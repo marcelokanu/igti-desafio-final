@@ -5,6 +5,8 @@ export const Container = styled.div`
 `;
 
 export const ButtonAdd = styled.a`
+  justify-content: flex-end;
+
   i {
   }
 
@@ -12,7 +14,7 @@ export const ButtonAdd = styled.a`
     background: var(--purple-hover);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 700px) {
     position: fixed;
     left: 0;
     right: 0;
@@ -25,10 +27,6 @@ export const ButtonAdd = styled.a`
     box-sizing: border-box;
     color: var(--white);
 
-    &::before {
-      content: 'Nova transação';
-    }
-
     i {
       display: none;
     }
@@ -38,29 +36,27 @@ export const ButtonAdd = styled.a`
 export const WrapperMenu = styled.div`
   max-width: 1280px;
   margin: 0 auto;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30%, 3fr));
+  grid-column-gap: 20px;
+  grid-auto-flow: column;
+  flex-shrink: 0;
+
   justify-content: space-between;
-`;
-
-export const Menu = styled.div`
-  background: var(--purple-bg);
-  border-top: 4px solid var(--orange);
-
+  align-items: center;
   h1 {
-    display: flex;
-    align-items: center;
-    margin: 10px;
     font-size: 2rem;
     color: var(--white);
+    display: flex;
+    align-items: center;
 
     > i {
       font-size: 2rem;
     }
-
-    width: 100%;
   }
   @media (max-width: 700px) {
     h1 {
+      display: none;
       justify-content: center;
       font-size: 1.3rem;
       > i {

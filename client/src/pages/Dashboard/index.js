@@ -16,7 +16,6 @@ import EditTransaction from '../EditTransaction';
 
 import {
   Container,
-  Menu,
   WrapperMenu,
   Wrapper,
   Header,
@@ -178,22 +177,20 @@ function Dashboard() {
 
   return (
     <Container>
-      <Menu>
-        <WrapperMenu>
-          <h1>
-            <i className="material-icons">attach_money</i>bios_money
-          </h1>
-          <ButtonAdd onClick={toggleModal}>
-            <i className="material-icons">add</i>
-          </ButtonAdd>
-        </WrapperMenu>
-      </Menu>
-
       <ToastContainer />
 
       <StickyBox offsetBottom={20}>
         <Header>
-          <Select value={monthSelected} onChange={handleChangeMonth} />
+          <WrapperMenu>
+            <h1>
+              <i className="material-icons">attach_money</i>
+            </h1>
+            <Select value={monthSelected} onChange={handleChangeMonth} />
+            <ButtonAdd onClick={toggleModal}>
+              <i className="material-icons">add</i>
+              Nova transação
+            </ButtonAdd>
+          </WrapperMenu>
           <Card data={filteredTransactions} />
         </Header>
       </StickyBox>

@@ -2,10 +2,11 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
+  flex-shrink: 0;
 
   justify-content: center;
   align-items: center;
-  padding: 10px 0;
+  padding: 5px 0;
 
   @media (max-width: 700px) {
     padding: 0;

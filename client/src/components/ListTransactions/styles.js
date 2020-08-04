@@ -14,6 +14,10 @@ export const Collection = styled.ul`
       background: var(--primary);
     }
   }
+
+  @media (max-width: 400px) {
+    margin-bottom: 40px;
+  }
 `;
 
 export const DayMonth = styled.span`
