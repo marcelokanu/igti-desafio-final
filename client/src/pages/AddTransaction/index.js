@@ -77,13 +77,10 @@ const ModalAddTransaction = ({ isOpen, setIsOpen, handleAddTransaction }) => {
 
           <Row>
             <Label htmlFor="category">Categoria</Label>
-            <Input
-              id="category"
-              name="category"
-              type="text"
-              className="validate"
-            />
+
+            <Input id="category" name="category" type="text" />
           </Row>
+
           <Row>
             <Label htmlFor="description" className="active">
               Descrição

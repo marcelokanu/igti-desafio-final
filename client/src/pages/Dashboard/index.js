@@ -20,6 +20,8 @@ import {
   WrapperMenu,
   Wrapper,
   Header,
+  Title,
+  Menu,
   BoxSearch,
   Input,
   Lancamentos,
@@ -179,20 +181,22 @@ function Dashboard() {
   return (
     <Container>
       <ToastContainer />
+      <Header>
+        <Title>Desafio Final - Bootcamp Fullstack</Title>
+      </Header>
 
       <StickyBox offsetBottom={20}>
-        <Header>
+        <Menu>
           <WrapperMenu>
             <img src={logoIgti} alt="Logomarca Igti" />
-            <ButtonAdd onClick={toggleModal}>
-              <i className="material-icons">monetization_on</i>
-              Nova transação
-            </ButtonAdd>
+            <Select value={monthSelected} onChange={handleChangeMonth} />
+            <ButtonAdd onClick={toggleModal}>Nova transação</ButtonAdd>
           </WrapperMenu>
-          <Select value={monthSelected} onChange={handleChangeMonth} />
-          <Card data={filteredTransactions} />
-        </Header>
+        </Menu>
       </StickyBox>
+      <Header>
+        <Card data={filteredTransactions} />
+      </Header>
       {loaded ? (
         <Wrapper>
           <BoxSearch>

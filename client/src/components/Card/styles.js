@@ -37,7 +37,6 @@ const handleFontColor = (type) => {
 
 export const CardContainer = styled.div`
   max-width: 1280px;
-  text-align: left;
   padding: 0 10px;
   box-sizing: border-box;
   margin: 0 auto;
@@ -45,10 +44,10 @@ export const CardContainer = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(30%, 3fr));
   grid-column-gap: 20px;
   grid-auto-flow: column;
+  justify-content: center;
   flex-shrink: 0;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+
   @media (max-width: 700px) {
     margin: 0;
     grid-template-columns: 1fr 1fr;
@@ -61,6 +60,8 @@ export const Card = styled.div`
   border-top: ${({ type }) => `5px solid ${handleColor(type)}`};
   padding: 10px 25px;
   border-radius: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
   color: ${({ type }) => handleFontColor(type)};
   > h1 {
     font-size: 1.5em;

@@ -5,17 +5,20 @@ export const Container = styled.div`
 `;
 
 export const ButtonAdd = styled.a`
-  padding: 10px;
+  padding: 15px;
+  margin-right: 10px;
+  margin-left: auto;
+
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--white);
   background: var(--teal-btn);
+
   border-radius: 5px;
-  border: 0;
   text-align: center;
   transition: 0.3s;
-  box-sizing: border-box;
+
   font-weight: bold;
 
   &:hover {
@@ -24,6 +27,7 @@ export const ButtonAdd = styled.a`
 
   @media (max-width: 700px) {
     position: fixed;
+    margin: 0;
     left: 0;
     right: 0;
     bottom: 0;
@@ -34,27 +38,33 @@ export const ButtonAdd = styled.a`
     text-align: center;
     opacity: 0.8;
     box-sizing: border-box;
-
-    > i {
-      display: none;
-    }
+    width: 100%;
   }
+`;
+
+export const Menu = styled.div`
+  background: var(--purple-bg);
+  max-height: 100px;
+  padding: 10px;
 `;
 
 export const WrapperMenu = styled.div`
   max-width: 1280px;
   margin: 0 auto;
-  padding: 20px 10px 0;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 1.6rem;
   align-items: center;
 
-  @media (max-width: 700px) {
-    padding: 0;
+  > img {
+    margin-left: 10px;
+  }
 
-    img {
-      width: 50px;
+  @media (max-width: 700px) {
+    display: flex;
+    justify-content: center;
+    > img {
+      display: none;
     }
   }
 `;
@@ -68,19 +78,21 @@ export const Wrapper = styled.div`
   justify-content: center;
 `;
 
-export const Title = styled.h1``;
+export const Title = styled.h1`
+  text-align: center;
+
+  color: var(--white);
+  @media (max-width: 700px) {
+    display: none;
+  }
+`;
 
 export const Header = styled.header`
-  text-align: center;
-  border-radius: 0 0 4px 4px;
-  height: 180px;
-
   background: var(--purple-bg);
+  padding: 10px;
 
   @media (max-width: 700px) {
-    img {
-      display: none;
-    }
+    padding: 0;
   }
 `;
 

@@ -16,7 +16,9 @@ export const Collection = styled.ul`
   }
 
   @media (max-width: 400px) {
-    margin-bottom: 40px;
+    &:last-child {
+      margin-bottom: 40px;
+    }
   }
 `;
 
