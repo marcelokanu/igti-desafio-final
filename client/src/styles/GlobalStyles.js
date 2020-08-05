@@ -114,6 +114,7 @@ html {
   --teal-bg-final-gradient: rgba(240, 240, 247,1);
   --teal-text: #017a38;
   --teal-btn: #04d361;
+  --teal-hover: #02b552;
 
   --font-money: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }

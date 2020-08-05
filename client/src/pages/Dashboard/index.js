@@ -8,6 +8,7 @@ import StickyBox from 'react-sticky-box';
 import api from '../../services/api';
 import { currentMonthYear } from '../../util';
 
+import logoIgti from '../../assets/logo-igti.png';
 import Select from '../../components/Select';
 import Card from '../../components/Card';
 import ListTransactions from '../../components/ListTransactions';
@@ -182,15 +183,13 @@ function Dashboard() {
       <StickyBox offsetBottom={20}>
         <Header>
           <WrapperMenu>
-            <h1>
-              <i className="material-icons">attach_money</i>
-            </h1>
-            <Select value={monthSelected} onChange={handleChangeMonth} />
+            <img src={logoIgti} alt="Logomarca Igti" />
             <ButtonAdd onClick={toggleModal}>
-              <i className="material-icons">add</i>
+              <i className="material-icons">monetization_on</i>
               Nova transação
             </ButtonAdd>
           </WrapperMenu>
+          <Select value={monthSelected} onChange={handleChangeMonth} />
           <Card data={filteredTransactions} />
         </Header>
       </StickyBox>
