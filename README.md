@@ -1,4 +1,4 @@
-# Desafio IGTI do módulo MongoDB - Desenvolvedor Fullstack Developer
+# Desafio Final do Bootcamp IGTI - Fullstack Developer
 
 ### https://mbonilla-igti-final.herokuapp.com/
 
