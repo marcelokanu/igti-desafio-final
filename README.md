@@ -1,6 +1,6 @@
 # Desafio IGTI do módulo MongoDB - Desenvolvedor Fullstack Developer
 
-### https://igti-mongo-desafio.herokuapp.com/
+### https://mbonilla-igti-final.herokuapp.com/
 
 ## Available Scripts
 
