@@ -7,13 +7,13 @@
 In the project directory, you can run:
 
 
-# Backend folder
-###### `create .env file using as model the file .sample-env and complete with your MongoDB connection address and port`
+# root folder
+###### `create .env file using as model the file .env-example and complete with your MongoDB connection address`
 
-### Run `yarn start` on base folder.
+### Run `yarn server` on base folder.
 
-# Frontend folder
-### Run `yarn start` on client folder.
+# Client folder
+### Run `yarn start`.
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -25,7 +25,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 
 # Objetivos
-xercitar os seguintes conceitos trabalhados nos Módulos 01 a 04:
+Exercitar os seguintes conceitos trabalhados nos Módulos 01 a 04:
 1. Implementação de algoritmos com JavaScript.
 2. Criação de API's com Node.js e Express.
 3. Criação de componentes com React com Class Components e/ou Functional Components.
